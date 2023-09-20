@@ -7,11 +7,11 @@ For the CIX Tiger Moth smoke system to work with JoinFS version 3.x, JoinFS need
 
 1. Close JoinFS
 
-2. Copy `Plane-CixTigerMoth.txt` into `Documents\JoinFS-FSX\Variables` and/or `Documents\JoinFS-FS2020\Variables`
+2. Run `Update-CixTigersJfsVariables.exe`
 
-3. In PowerShell, run `.\Update-CixTigersJfsVariables.ps1` (run `help .\Update-CixTigersJfsVariables.ps1` for more options, but this isn't necessary)
+3. Select which versions of JoinFS you'd like to update then press "Update"
 
-The script will update a file `C:\Users\<username>\AppData\Local\JoinFS-FSX\variables.txt` and/or `C:\Users\<username>\AppData\Local\JoinFS-FS2020\variables.txt`. A backup is made first (backup filename includes date and time).
+The program will update a file `C:\Users\<username>\AppData\Local\JoinFS-FSX\variables.txt` and/or `C:\Users\<username>\AppData\Local\JoinFS-FS2020\variables.txt`. A backup is made first (backup filename includes date and time).
 
 If you need to revert:
 

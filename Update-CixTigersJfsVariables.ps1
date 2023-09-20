@@ -29,9 +29,23 @@ Function UpdateFiles {
         return "[$(Split-Path -Path $tigerMothvariablesFile)] not found - skipping"
     }
 
-    $scriptPath = (Get-Variable MyInvocation -Scope Script).Value.MyCommand.Path
-    $scriptDir = Split-Path $scriptPath
-    Copy-Item -Path (Join-Path -Path $scriptDir -ChildPath "Plane-CixTigerMoth.txt") -Destination $tigerMothvariablesFile
+    If(-not (Test-Path "Plane-CixTigerMoth.txt" -PathType Leaf)) {
+        return "'Plane-CixTigerMoth.txt' not found - skipping"
+    }
+
+    # If compiling with PS2EXE, $MyInvocation is different. See https://github.com/MScholtes/PS2EXE
+    #if ($MyInvocation.MyCommand.CommandType -eq "ExternalScript") { 
+    #    $ScriptPath = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition 
+    #} else { 
+    #    $ScriptPath = Split-Path -Parent -Path ([Environment]::GetCommandLineArgs()[0]) 
+    #    if (!$ScriptPath) { 
+    #        $ScriptPath = "." 
+    #    } 
+    #}
+
+    #$scriptDir = Split-Path $scriptPath
+    #Copy-Item -Path (Join-Path -Path $scriptDir -ChildPath "Plane-CixTigerMoth.txt") -Destination $tigerMothvariablesFile
+    Copy-Item -Path "Plane-CixTigerMoth.txt" -Destination $tigerMothvariablesFile
 
     $models = Get-Content $modelsFile | Where-Object{$_ -match "^Tiger Moth*"} | ForEach-Object{$_.split("\|")[0]}
     Write-Verbose "Tiger Moth models found: $($models.length)"
