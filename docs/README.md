@@ -1,25 +1,48 @@
-# cix-tigers-jfs
-Set JoinFS variables files as required for 2-4-CIX Tigers.
+# CIX Tiger Smoke & JoinFS
+A little bit of configuration is needed to get smoke working in the Tiger Moth...
 
-This (currently) only works for the FSX and MSFS 2020 versions of JoinFS. Pull requests will be accepted to make it work for the XPlane version!
+## Step 1: Add The Variables file
 
-For the CIX Tiger Moth smoke system to work with JoinFS version 3.x, JoinFS needs a special "variables" file mapping for each Tiger Moth model/variation. This can (should?!) be done manually, but is a bit laborious so this repository attempts to simplify the process.
+In your `Documents` folder, you should see a folder for each version of JoinFS you have installed, one or more of:
 
-1. Close JoinFS
+- `JoinFS-FS2020`
+- `JoinFS-FSX`
+- `JoinFS-XPLANE`
 
-2. Run `Update-CixTigersJfsVariables.exe`
+Proceed with these instructions according to which version you want to setup with smoke.
 
-3. Select which versions of JoinFS you'd like to update then press "Update"
+Inside this `JoinFS-` folder, there is another folder called `Variables`. Inside this, there should be a number of text files: `Plane.txt`, `QuadProp.txt`, etc.
 
-The program will update a file `C:\Users\<username>\AppData\Local\JoinFS-FSX\variables.txt` and/or `C:\Users\<username>\AppData\Local\JoinFS-FS2020\variables.txt`. A backup is made first (backup filename includes date and time).
+Place the file `Plane-CixTigerMoth.txt` in this folder.
 
-If you need to revert:
+You should end up with something like:
 
-1. Close JoinFS
+![Screenshot showing `Documents\JoinFS-FS2020\Variabnles` with the default files plus the new `Plane-CixTigerMoth.txt` file](files.png)
 
-2. Go to `C:\Users\<username>\AppData\Local\JoinFS-FSX` or `C:\Users\<username>\AppData\Local\JoinFS-FS2020`
+## Step 2: Configure JoinFS
 
-3. Replace `variables.txt` with whichever `variables.txt.xxxxxxxx-xxxxxx.backup` file you want to go back to
+Start your simulator then open the same version of JoinFS (same versions that you configured above!)
 
-# Contributing
-Please feel free to open issues/pull requests
+From the main window, click <kbd>File</kbd> → <kbd>Assign Variables...</kbd>
+
+On the "Select a type" drop down list, there will be a Tiger Moth entry for each livery you have installed. Select the first <kbd>Tiger Moth TIGER-</kbd> entry.
+
+![Default Variables window](variables-1.png)
+
+You will see in the <kbd>Variable Files</kbd> box at the bottom, it has `SingleProp.txt` and `Plane.txt`
+
+1. Select <kbd>Plane.txt</kbd>
+
+2. Click <kbd>Remove</kbd>. This should remove <kbd>Plane.txt</kbd>, leaving just <kbd>SingleProp.txt</kbd>
+
+3. Click <kbd>Add...</kbd>. A standard file chooser dialog should open.
+
+4. Select the file <kbd>Plane-CixTigerMoth.txt</kbd> and click the <kbd>Open</kbd> button.
+
+5. This should add `Plane-CixTigerMoth.txt` to the list of Variable Files. It should now look like: ![Variables window after making the changes](variables-2.png)
+
+6. Click on the <kbd>Select a type</kbd> dropdown and select the next <kbd>Tiger Moth TIGER-</kbd> entry.
+
+7. Repeat these steps for all <kbd>Tiger Moth TIGER-</kbd> entries in the list.
+
+8. Finally, press the <kbd>OK</kbd> button
